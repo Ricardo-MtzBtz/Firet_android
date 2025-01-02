@@ -41,8 +41,9 @@ public class CitasActivity extends AppCompatActivity {
                 String fecha = cursor.getString(cursor.getColumnIndex("fecha"));
                 String hora = cursor.getString(cursor.getColumnIndex("hora"));
                 String motivo = cursor.getString(cursor.getColumnIndex("motivo"));
+                String domicilio = cursor.getString(cursor.getColumnIndex("domicilio"));
 
-                listaCitas.add("Paciente: " + nombrePaciente + "\nFecha: " + fecha + "\nHora: " + hora + "\nMotivo: " + motivo);
+                listaCitas.add("Paciente: " + nombrePaciente + "\nFecha: " + fecha + "\nHora: " + hora + "\nMotivo: " + motivo +"\nDomicilio: "+ domicilio+"\n");
             }while (cursor.moveToNext());
         }else {
             listaCitas.add("No hay citas registradas");

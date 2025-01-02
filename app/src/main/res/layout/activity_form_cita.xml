@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:id="@+id/main5"
-    >
+    android:id="@+id/main5">
 
     <EditText
         android:id="@+id/etNombrePaciente"
@@ -20,23 +19,57 @@
         android:hint="Fecha (dd/mm/aaaa)" />
 
     <EditText
-        android:id="@+id/etHora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Hora (hh:mm)" />
-
-    <EditText
         android:id="@+id/etMotivo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Motivo de la Cita" />
 
     <EditText
+        android:id="@+id/lvHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora: "
+        android:textSize="16sp"
+        />
+
+    <Spinner
+        android:id="@+id/spinnerHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Hora" />
+
+    <TextView
+        android:id="@+id/lvTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En: "
+        android:textSize="16sp"
+        />
+    <RadioGroup
+        android:id="@+id/rgTipoCita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clinica" />
+
+        <RadioButton
+            android:id="@+id/rbExterna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Domicilio" />
+    </RadioGroup>
+
+    <EditText
         android:id="@+id/etDomicilio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Domilio: "
-        />
+        android:hint="Domicilio"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btnGuardarCita"
@@ -46,3 +79,4 @@
         android:layout_marginTop="16dp" />
 
 </LinearLayout>
+

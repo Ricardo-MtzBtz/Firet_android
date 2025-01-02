@@ -2,8 +2,12 @@ package com.rmb.firet_v1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,15 +26,35 @@ public class FormCitaActivity extends AppCompatActivity {
 
         EditText etNombrePaciente = findViewById(R.id.etNombrePaciente);
         EditText etFecha = findViewById(R.id.etFecha);
-        EditText etHora = findViewById(R.id.etHora);
+        Spinner etHora = findViewById(R.id.spinnerHora);
         EditText etMotivo = findViewById(R.id.etMotivo);
         EditText etDomicilio = findViewById(R.id.etDomicilio);
+        RadioGroup rgTipoCita = findViewById(R.id.rgTipoCita);
         Button btnGuardarCita = findViewById(R.id.btnGuardarCita);
+
+        //Datos del campo de horarios disponibles
+        String[] horas ={
+          "08:00 AM","09:00 AM","10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM",
+          "3:00 PM","4:00 PM","5:00 PM","6:00 PM"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, horas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        etHora.setAdapter(adapter);
+
+        //Cambios para tipo de consulta (local o foranea).
+        rgTipoCita.setOnCheckedChangeListener(((group, checkedId) -> {
+            if (checkedId == R.id.rbExterna) {
+                etDomicilio.setVisibility(View.VISIBLE);
+            } else if (checkedId == R.id.rbLocal) {
+                etDomicilio.setVisibility(View.GONE);
+                etDomicilio.setText("Clinica");
+            }
+        }));
+
 
         btnGuardarCita.setOnClickListener(v -> {
             String nombreP = etNombrePaciente.getText().toString().trim();
             String fecha = etFecha.getText().toString().trim();
-            String hora = etHora.getText().toString().trim();
+            String hora = etHora.getSelectedItem().toString().trim();
             String motivo = etMotivo.getText().toString().trim();
             String domicilio = etDomicilio.getText().toString().trim();
 
