@@ -19,10 +19,16 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btnPacientes).setOnClickListener(v -> {
             startActivity(new Intent(this, PacientesActivity.class));
+            finish();
         });
 
         findViewById(R.id.btnCitas).setOnClickListener(v -> {
             startActivity(new Intent(this, CitasActivity.class));
+            finish();
+        });
+        findViewById(R.id.btnCerrarsesion).setOnClickListener(v -> {
+            startActivity(new Intent(this, Login.class));
+            finish();
         });
 
 

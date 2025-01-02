@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Fecha (dd/mm/aaaa)" />
-
+<!--Primera vez o subsecuente el tipo de motivo-->
     <EditText
         android:id="@+id/etMotivo"
         android:layout_width="match_parent"
