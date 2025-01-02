@@ -26,6 +26,13 @@ public class PacientesActivity extends AppCompatActivity {
             startActivity(new Intent(this, FormPacienteActivity.class));
         });
 
+        //Accion para el boton "Regresar al menu principal"
+        findViewById(R.id.btnRegresarMenu).setOnClickListener(v -> {
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        });
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main2), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

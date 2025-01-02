@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +22,18 @@ public class CitasActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_citas);
         cargarCita();
+        //Accion para el boton "Agregar cita"
         findViewById(R.id.btnAgregarCita).setOnClickListener(v -> {
             startActivity(new Intent(this, FormCitaActivity.class));
+            finish();
         });
+
+        //Accion para el boton "Regresar al menu principal"
+        findViewById(R.id.btnRegresarMenu).setOnClickListener(v -> {
+           startActivity(new Intent(this,MainActivity.class));
+           finish();
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main4), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -43,7 +53,7 @@ public class CitasActivity extends AppCompatActivity {
                 String motivo = cursor.getString(cursor.getColumnIndex("motivo"));
                 String domicilio = cursor.getString(cursor.getColumnIndex("domicilio"));
 
-                listaCitas.add("Paciente: " + nombrePaciente + "\nFecha: " + fecha + "\nHora: " + hora + "\nMotivo: " + motivo +"\nDomicilio: "+ domicilio+"\n");
+                listaCitas.add("\nPaciente: " + nombrePaciente + "\nFecha: " + fecha + "\nHora: " + hora + "\nMotivo: " + motivo +"\nDomicilio: "+ domicilio+"\n");
             }while (cursor.moveToNext());
         }else {
             listaCitas.add("No hay citas registradas");
