@@ -44,7 +44,11 @@ public class PacientesActivity extends AppCompatActivity {
             do {
                 String nombre = cursor.getString(cursor.getColumnIndex("nombre"));
                 String motivo = cursor.getString(cursor.getColumnIndex("motivo"));
-                listaPacientes.add(nombre + " - Motivo: " + motivo);
+                String edad = cursor.getString(cursor.getColumnIndex("edad"));
+                String antecedentes = cursor.getString(cursor.getColumnIndex("antecedentes"));
+                String domicilio = cursor.getString(cursor.getColumnIndex("domicilio"));
+                String detalles = cursor.getString(cursor.getColumnIndex("detalles"));
+                listaPacientes.add("\nNombre: "+ nombre + "\nMotivo: " + motivo + "\nEdad: " + edad+ "\nAntecedentes: "+ antecedentes + "\nDomicilio: " +domicilio+ "\nEnfermedad Cronica: " +detalles + "\n");
             } while (cursor.moveToNext());
         } else {
             listaPacientes.add("No hay pacientes registrados");

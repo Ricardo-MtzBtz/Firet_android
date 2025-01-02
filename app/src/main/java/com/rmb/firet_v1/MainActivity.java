@@ -25,9 +25,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, CitasActivity.class));
         });
 
-        findViewById(R.id.btnReportes).setOnClickListener(v -> {
-            // Redirigir a la actividad de reportes
-        });
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main1), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

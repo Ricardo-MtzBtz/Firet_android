@@ -24,6 +24,7 @@ public class FormCitaActivity extends AppCompatActivity {
         EditText etFecha = findViewById(R.id.etFecha);
         EditText etHora = findViewById(R.id.etHora);
         EditText etMotivo = findViewById(R.id.etMotivo);
+        EditText etDomicilio = findViewById(R.id.etDomicilio);
         Button btnGuardarCita = findViewById(R.id.btnGuardarCita);
 
         btnGuardarCita.setOnClickListener(v -> {
@@ -31,14 +32,15 @@ public class FormCitaActivity extends AppCompatActivity {
             String fecha = etFecha.getText().toString().trim();
             String hora = etHora.getText().toString().trim();
             String motivo = etMotivo.getText().toString().trim();
+            String domicilio = etDomicilio.getText().toString().trim();
 
-            if (nombreP.isEmpty() || fecha.isEmpty() || hora.isEmpty() || motivo.isEmpty()) {
+            if (nombreP.isEmpty() || fecha.isEmpty() || hora.isEmpty() || motivo.isEmpty() || domicilio.isEmpty()) {
                 Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
                 return;
             }
             try {
                 DatabaseHelper db = new DatabaseHelper(this);
-                boolean exito = db.insertarCita(nombreP, fecha, hora, motivo);
+                boolean exito = db.insertarCita(nombreP, fecha, hora, motivo, domicilio);
                 if (exito) {
                     Toast.makeText(this, "Cita Guardada: " + nombreP, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(this, CitasActivity.class);

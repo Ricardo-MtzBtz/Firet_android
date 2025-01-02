@@ -31,6 +31,13 @@
         android:layout_height="wrap_content"
         android:hint="Motivo de la Cita" />
 
+    <EditText
+        android:id="@+id/etDomicilio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Domilio: "
+        />
+
     <Button
         android:id="@+id/btnGuardarCita"
         android:layout_width="match_parent"

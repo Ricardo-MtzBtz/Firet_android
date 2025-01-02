@@ -51,13 +51,6 @@
                 android:text="Gestión de Citas"
                 android:layout_marginTop="8dp" />
 
-            <Button
-                android:id="@+id/btnReportes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Generar Reportes"
-                android:layout_marginTop="8dp" />
-
 
         </LinearLayout>
 

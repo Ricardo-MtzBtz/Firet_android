@@ -4,12 +4,22 @@ public class Cita {
     private String fecha;
     private String hora;
     private String motivo;
+    private String domicilio;
 
-    public Cita(String nombrePaciente, String fecha, String hora, String motivo) {
+    public Cita(String nombrePaciente, String fecha, String hora, String motivo, String domicilio) {
         this.nombrePaciente = nombrePaciente;
         this.fecha = fecha;
         this.hora = hora;
         this.motivo = motivo;
+        this.domicilio = domicilio;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
     public String getNombrePaciente() {
@@ -32,15 +42,12 @@ public class Cita {
         return hora;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
+    public void setHora(String hora) {this.hora = hora;}
 
     public String getMotivo() {
         return motivo;
     }
 
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
+    public void setMotivo(String motivo) {this.motivo = motivo;}
+
 }

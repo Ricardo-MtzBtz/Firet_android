@@ -10,7 +10,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Nombres y version de la base de datos
     private static final String DATABASE_NAME = "firet_clinica.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1; //Cambiar para rehacer la base de datos
 
     //Tables
     private static final String TABLE_PACIENTES = "Pacientes";
@@ -32,6 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_CITA_FECHA = "fecha";
     private static final String COL_CITA_HORA = "hora";
     private static final String COL_CITA_MOTIVO = "motivo";
+    private static final String COL_CITA_DOMICILIO = "domicilio";
 
     //Constructor
     public DatabaseHelper(Context context) {
@@ -53,12 +54,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_PACIENTES_TABLE);
 
         //Crear tabla citas
-        String CREATE_CITAS_TABLE = "CREATE TABLE " + TABLE_CITAS + " ("
+        String CREATE_CITAS_TABLE = "CREATE TABLE " + TABLE_CITAS + "("
                 + COL_CITA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_CITA_PACIENTE + " TEXT, "
                 + COL_CITA_FECHA + " TEXT, "
                 + COL_CITA_HORA + " TEXT, "
-                + COL_CITA_MOTIVO + " TEXT )";
+                + COL_CITA_MOTIVO + " TEXT,"
+                + COL_CITA_DOMICILIO + " TEXT )";
         db.execSQL(CREATE_CITAS_TABLE);
     }
 
@@ -89,13 +91,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
     //Insertar Cita
-    public boolean insertarCita(String nombrePaciente, String fecha, String hora, String motivo) {
+    public boolean insertarCita(String nombrePaciente, String fecha, String hora, String motivo, String domicilio) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_CITA_PACIENTE, nombrePaciente);
         values.put(COL_CITA_FECHA, fecha);
         values.put(COL_CITA_HORA, hora);
         values.put(COL_CITA_MOTIVO, motivo);
+        values.put(COL_CITA_DOMICILIO, domicilio);
 
 
         long result = db.insert(TABLE_CITAS,null,values);
